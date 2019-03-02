@@ -7,7 +7,7 @@
 </div>
 
 <?php if(validation_errors()): ?>
-  <div class="alert alert-danger"><?= validation_errors(); ?></div>  
+  <div class="alert alert-danger col-sm-3"><?= validation_errors(); ?></div>  
 <?php endif; ?>
 <div class="row">
     <div class="col-md-4">
