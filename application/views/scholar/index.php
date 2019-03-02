@@ -5,7 +5,10 @@
     </button>
   </div>
 </div>
-<?= validation_errors(); ?>
+
+<?php if(validation_errors()): ?>
+  <div class="alert alert-danger"><?= validation_errors(); ?></div>  
+<?php endif; ?>
 <div class="row">
     <div class="col-md-4">
         <h1>Scholar list</h1>
