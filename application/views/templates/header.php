@@ -17,9 +17,9 @@
         
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="<?php base_url(); ?>home">Home </a>
+            <a class="nav-item nav-link" href="<?php base_url(); ?>home">Home </a>
             <a class="nav-item nav-link" href="<?php base_url(); ?>scholar">Scholar</a>
-            <a class="nav-item nav-link" href="#">About</a>
+            <a class="nav-item nav-link" href="<?php base_url(); ?>about">About</a>
             </div>
         </div>
       </div>
