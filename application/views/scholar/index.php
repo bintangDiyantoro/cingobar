@@ -1,3 +1,27 @@
+<?php if($this->session->flashdata('addFlash')): ?>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> <?= $this->session->flashdata('addFlash'); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<?php elseif($this->session->flashdata('delFlash')): ?>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> <?= $this->session->flashdata('delFlash'); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
+
 <div class="row mb-3">
   <div class="col-lg-6">
     <button type="button" class="btn btn-primary showAddModal" data-toggle="modal" data-target="#formModal">
@@ -16,6 +40,7 @@
             <?php foreach($scholars as $scholar): ?>
             <li class="list-group-item list-group-item-action">
                 <?= $scholar['name']; ?>
+                <a href="<?php base_url(); ?>scholar/delete/<?= $scholar['id']; ?>" class="badge badge-danger float-right ml-2" onclick="return confirm('Are you sure want to delete '+'<?= $scholar['name']; ?>'+'?')">Delete</a>
                 <a href="#" class="badge badge-info float-right ml-2">Detail</a>
             </li>
             <?php endforeach; ?>
@@ -38,15 +63,15 @@
             <input type="hidden" name="id" id="id">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
             </div>
             <div class="form-group">
                 <label for="nis">NIS</label>
-                <input type="number" class="form-control" id="nis" name="nis" placeholder="0000000">
+                <input type="number" class="form-control" id="nis" name="nis" placeholder="0000000" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
             </div>
             <div class="form-group">
                 <label for="department">Department</label>
