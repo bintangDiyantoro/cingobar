@@ -40,8 +40,8 @@
             <?php foreach($scholars as $scholar): ?>
             <li class="list-group-item list-group-item-action">
                 <?= $scholar['name']; ?>
-                <a href="<?php base_url(); ?>scholar/delete/<?= $scholar['id']; ?>" class="badge badge-danger float-right ml-2" onclick="return confirm('Are you sure want to delete '+'<?= $scholar['name']; ?>'+'?')">Delete</a>
-                <a href="#" class="badge badge-info float-right ml-2">Detail</a>
+                <a href="<?php base_url(); ?>scholar/delete/<?= $scholar['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('Are you sure want to delete '+'<?= $scholar['name']; ?>'+'?')">delete</a>
+                <a href="<?= base_url(); ?>scholar/detail/<?= $scholar['id']; ?>" class="badge badge-info float-right">detail</a>
             </li>
             <?php endforeach; ?>
         </ul>

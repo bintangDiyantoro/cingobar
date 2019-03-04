@@ -33,6 +33,13 @@ class Scholar extends CI_Controller {
             // header('Location: '.base_url().'scholar');
         }
     }
+    public function detail($id){
+        $data['title'] = 'Detail';
+        $data['detail'] = $this->Scholar_model->getWhere($id);
+        $this->load->view('templates/header', $data);
+        $this->load->view('scholar/detail', $data);
+        $this->load->view('templates/footer', $data);
+    }
     public function delete($id){
         $this->db->delete('scholars', array('id' => $id));
         $this->session->set_flashdata('delFlash', 'Data successfully Deleted!');
