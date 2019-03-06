@@ -41,6 +41,7 @@
             <li class="list-group-item list-group-item-action">
                 <?= $scholar['name']; ?>
                 <a href="<?php base_url(); ?>scholar/delete/<?= $scholar['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('Are you sure want to delete '+'<?= $scholar['name']; ?>'+'?')">delete</a>
+                <a href="" class="badge badge-warning float-right editModal" data-toggle="modal" data-target="#formModal" data-id="<?= $scholar['id']; ?>">edit</a>
                 <a href="<?= base_url(); ?>scholar/detail/<?= $scholar['id']; ?>" class="badge badge-info float-right">detail</a>
             </li>
             <?php endforeach; ?>
@@ -76,11 +77,11 @@
             <div class="form-group">
                 <label for="department">Department</label>
                 <select class="form-control" id="department" name="department">
-                <option>Technique of Informatique</option>
-                <option>Technique of Accounting</option>
-                <option>Art of Cooking</option>
-                <option>Art of Music</option>
-                <option>Technique of Driving</option>
+                <option value="Technique of Informatique">Technique of Informatique</option>
+                <option value="Technique of Accounting">Technique of Accounting</option>
+                <option value="Art of Cooking">Art of Cooking</option>
+                <option value="Art of Music">Art of Music</option>
+                <option value="Technique of Driving">Technique of Driving</option>
                 </select>
             </div>
         </div>
