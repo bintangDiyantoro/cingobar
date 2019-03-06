@@ -29,6 +29,17 @@
     </button>
   </div>
 </div>
+<div class="row mb-3">
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search scholar data" autofocus>
+      <div class="input-group-append">
+        <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <?php if(validation_errors()): ?>
   <div class="alert alert-danger col-sm-3"><?= validation_errors(); ?></div>  
