@@ -22,4 +22,12 @@ class Scholar_model extends CI_Model {
     public function delete($id){
         $this->db->delete('scholars', array('id' => $id));
     }
+    public function searchScholar(){
+        $keyword = $this->input->post('keyword', true);
+        $this->db->like('name', $keyword);
+        $this->db->or_like('nis', $keyword);
+        $this->db->or_like('email', $keyword);
+        $this->db->or_like('department', $keyword);
+        return $this->db->get('scholars')->result_array();
+    }
 }

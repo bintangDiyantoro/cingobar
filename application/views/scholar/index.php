@@ -29,14 +29,17 @@
     </button>
   </div>
 </div>
+
 <div class="row mb-3">
   <div class="col-lg-4">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search scholar data" autofocus>
-      <div class="input-group-append">
-        <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+    <form action="" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" name="keyword" placeholder="Search scholar data" autofocus>
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -47,6 +50,9 @@
 <div class="row">
     <div class="col-md-4">
         <h1>Scholar list</h1>
+        <?php if(empty($scholars)): ?>
+          <div class="alert alert-warning col-sm-6">No data found!</div>  
+        <?php endif; ?>
         <ul class="list-group">
             <?php foreach($scholars as $scholar): ?>
             <li class="list-group-item list-group-item-action">

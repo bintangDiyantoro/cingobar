@@ -8,6 +8,23 @@ class Scholar extends CI_Controller {
         $this->load->model('Scholar_model');
         $this->load->library('form_validation');
     }
+    public function index(){
+        $data['title'] = 'Scholars';
+        $data['scholars'] = $this->Scholar_model->getAllScholars();
+        if($this->input->post('keyword')){
+            $data['scholars'] = $this->Scholar_model->searchScholar();
+        }
+        $this->load->view('templates/header', $data);
+        $this->load->view('scholar/index', $data);
+        $this->load->view('templates/footer');
+    }
+    public function detail($id){
+        $data['title'] = 'Detail';
+        $data['detail'] = $this->Scholar_model->getWhere($id);
+        $this->load->view('templates/header', $data);
+        $this->load->view('scholar/detail', $data);
+        $this->load->view('templates/footer', $data);
+    }
     public function insert(){
         $data['title'] = 'Scholars';
         $data['scholars'] = $this->Scholar_model->getAllScholars();
@@ -25,20 +42,6 @@ class Scholar extends CI_Controller {
             redirect('Scholar');
             // header('Location: '.base_url().'scholar');
         }
-    }
-    public function index(){
-        $data['title'] = 'Scholars';
-        $data['scholars'] = $this->Scholar_model->getAllScholars();
-        $this->load->view('templates/header', $data);
-        $this->load->view('scholar/index', $data);
-        $this->load->view('templates/footer');
-    }
-    public function detail($id){
-        $data['title'] = 'Detail';
-        $data['detail'] = $this->Scholar_model->getWhere($id);
-        $this->load->view('templates/header', $data);
-        $this->load->view('scholar/detail', $data);
-        $this->load->view('templates/footer', $data);
     }
     public function getUpdate(){
         echo json_encode($this->Scholar_model->getWhere($_POST['id']));
