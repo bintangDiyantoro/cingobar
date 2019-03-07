@@ -30,18 +30,36 @@
   </div>
 </div>
 
+<div class="row mb-3">
+  <div class="col-lg-4">
+    <form action="" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" name="keyword" placeholder="Search scholar data" autofocus>
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 <?php if(validation_errors()): ?>
   <div class="alert alert-danger col-sm-3"><?= validation_errors(); ?></div>  
 <?php endif; ?>
 <div class="row">
     <div class="col-md-4">
         <h1>Scholar list</h1>
+        <?php if(empty($scholars)): ?>
+          <div class="alert alert-warning col-sm-6">No data found!</div>  
+        <?php endif; ?>
         <ul class="list-group">
             <?php foreach($scholars as $scholar): ?>
             <li class="list-group-item list-group-item-action">
                 <?= $scholar['name']; ?>
-                <a href="<?php base_url(); ?>scholar/delete/<?= $scholar['id']; ?>" class="badge badge-danger float-right ml-2" onclick="return confirm('Are you sure want to delete '+'<?= $scholar['name']; ?>'+'?')">Delete</a>
-                <a href="#" class="badge badge-info float-right ml-2">Detail</a>
+                <a href="<?php base_url(); ?>scholar/delete/<?= $scholar['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('Are you sure want to delete '+'<?= $scholar['name']; ?>'+'?')">delete</a>
+                <a href="" class="badge badge-warning float-right editModal" data-toggle="modal" data-target="#formModal" data-id="<?= $scholar['id']; ?>">edit</a>
+                <a href="<?= base_url(); ?>scholar/detail/<?= $scholar['id']; ?>" class="badge badge-info float-right">detail</a>
             </li>
             <?php endforeach; ?>
         </ul>
@@ -76,11 +94,11 @@
             <div class="form-group">
                 <label for="department">Department</label>
                 <select class="form-control" id="department" name="department">
-                <option>Technique of Informatique</option>
-                <option>Technique of Accounting</option>
-                <option>Art of Cooking</option>
-                <option>Art of Music</option>
-                <option>Technique of Driving</option>
+                <option value="Technique of Informatique">Technique of Informatique</option>
+                <option value="Technique of Accounting">Technique of Accounting</option>
+                <option value="Art of Cooking">Art of Cooking</option>
+                <option value="Art of Music">Art of Music</option>
+                <option value="Technique of Driving">Technique of Driving</option>
                 </select>
             </div>
         </div>
